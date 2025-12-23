@@ -93,7 +93,7 @@ The following improvements will be delivered incrementally:
 - [x] Base Dockerfile with PHP + extensions
 - [ ] Composer dependency caching
 - [ ] Multi-stage build optimization
-- [ ] Example CI pipelines (Bitbucket / GitHub)
+- [x] Example CI pipelines (Bitbucket / GitHub)
 - [ ] Versioned Docker tags
 - [ ] Documentation for framework-specific usage
 
