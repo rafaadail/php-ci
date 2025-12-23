@@ -1,0 +1,32 @@
+name: PHP CI
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    container:
+      image: rafaadail/php-ci:7.4
+
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show PHP version
+        run: php -v
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Run tests
+        run: |
+          if [ -f artisan ]; then
+            php artisan test
+          else
+            echo "No Laravel project detected, skipping tests"
+          fi
