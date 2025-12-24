@@ -4,6 +4,8 @@ pipelines:
       - step:
           image: rafaadail/php-ci:7.4
           name: Run PHP CI checks
+          caches:
+            - composer
           script:
             - php -v
             - composer --version
