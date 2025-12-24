@@ -91,7 +91,7 @@ This repository follows a **professional Git workflow**:
 The following improvements will be delivered incrementally:
 
 - [x] Base Dockerfile with PHP + extensions
-- [ ] Composer dependency caching
+- [x] Composer dependency caching
 - [x] Multi-stage build optimization
 - [x] Example CI pipelines (Bitbucket / GitHub)
 - [x] Versioned Docker tags
