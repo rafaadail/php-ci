@@ -2,16 +2,20 @@ name: PHP CI
 
 on:
   push:
-    branches: [ "develop" ]
+    branches:
+      - develop
+      - main
   pull_request:
+    branches:
+      - develop
+      - main
 
 jobs:
   tests:
     runs-on: ubuntu-latest
 
     container:
-      image: rafaadail/php-ci:7.4
-
+      image: ${{ github.ref_name == 'develop' && 'rafaadail/php-ci:7.4.33' || 'rafaadail/php-ci:7.4' }}
 
     steps:
       - name: Checkout repository
@@ -23,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: composer install --no-interaction --prefer-dist
 
-      - name: Run tests
+      - name: Run tests (Laravel if detected)
         run: |
           if [ -f artisan ]; then
             php artisan test
