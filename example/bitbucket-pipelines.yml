@@ -1,11 +1,17 @@
-image: rafaadail/php-ci:7.4
-
 pipelines:
-  develop:
-    - step:
-        name: Run PHP CI checks
-        script:
-          - php -v
-          - composer --version
-          - composer install --no-interaction --prefer-dist
-          - php artisan test || true
+  branches:
+    develop:
+      - step:
+          image: rafaadail/php-ci:7.4
+          name: Run PHP CI checks
+          script:
+            - php -v
+            - composer --version
+            - composer install --no-interaction --prefer-dist
+            - php artisan test || true
+    main:
+      - step:
+          image: rafaadail/php-ci:7.4
+          name: CI / Deploy - Production
+          script:
+            - composer install --no-dev
